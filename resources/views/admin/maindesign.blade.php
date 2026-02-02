@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="admin/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="admin/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- Custom Font Icons CSS-->
-    <link rel="stylesheet" href="admin/css/font.css">
+    <link rel="stylesheet" href="{{ asset('admin/css/font.css') }}">
     <!-- Google fonts - Muli-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="admin/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin/css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="admin/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="admin/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('admin/img/favicon.ico') }}">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -85,8 +85,24 @@
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
-            <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
+            <li class="active">
+                <a href="index.html"> <i class="icon-home"></i>Home </a>
+            </li>
+            <li>
+                <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> 
+                    <i class="icon-windows"></i>
+                    Category 
+                </a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                    <li><a href="{{route('admin.addcategory')}}">Add Category</a></li>
+                    <li><a href="{{route('admin.viewcategory')}}">View Category</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> 
+                    <i class="icon-windows"></i>
+                    Example dropdown 
+                </a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="#">Page</a></li>
                     <li><a href="#">Page</a></li>
@@ -103,63 +119,10 @@
           </div>
         </div>
         <section class="no-padding-top no-padding-bottom">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="statistic-block block">
-                            <div class="progress-details d-flex align-items-end justify-content-between">
-                                <div class="title">
-                                <div class="icon"><i class="icon-user-1"></i></div><strong>New Clients</strong>
-                                </div>
-                                <div class="number dashtext-1">27</div>
-                            </div>
-                            <div class="progress progress-template">
-                                <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="statistic-block block">
-                            <div class="progress-details d-flex align-items-end justify-content-between">
-                                <div class="title">
-                                    <div class="icon"><i class="icon-contract"></i></div><strong>New Projects</strong>
-                                </div>
-                                <div class="number dashtext-2">375</div>
-                            </div>
-                            <div class="progress progress-template">
-                                <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="statistic-block block">
-                            <div class="progress-details d-flex align-items-end justify-content-between">
-                                <div class="title">
-                                    <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>New Invoices</strong>
-                                </div>
-                                <div class="number dashtext-3">140</div>
-                            </div>
-                            <div class="progress progress-template">
-                                <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="statistic-block block">
-                            <div class="progress-details d-flex align-items-end justify-content-between">
-                                <div class="title">
-                                    <div class="icon"><i class="icon-writing-whiteboard"></i></div>
-                                    <strong>All Projects</strong>
-                                </div>
-                                <div class="number dashtext-4">41</div>
-                            </div>
-                            <div class="progress progress-template">
-                                <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+             @yield('dashboard')
+             @yield('add_category')
+             @yield('view_category')
+             @yield('update_category')
         </section>
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">
@@ -172,13 +135,13 @@
       </div>
     </div>
     <!-- JavaScript files-->
-    <script src="admin/vendor/jquery/jquery.min.js"></script>
-    <script src="admin/vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="admin/vendor/chart.js/Chart.min.js"></script>
-    <script src="admin/vendor/jquery-validation/jquery.validate.min.js"></script>
-    <script src="admin/js/charts-home.js"></script>
-    <script src="admin/js/front.js"></script>
+    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/popper.js/umd/popper.min.js') }}"> </script>
+    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
+    <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('admin/js/charts-home.js') }}"></script>
+    <script src="{{ asset('admin/js/front.js') }}"></script>
   </body>
 </html>
