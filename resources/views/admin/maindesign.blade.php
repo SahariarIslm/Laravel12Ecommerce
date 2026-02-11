@@ -28,17 +28,6 @@
   <body>
     <header class="header">   
         <nav class="navbar navbar-expand-lg">
-            <div class="search-panel">
-            <div class="search-inner d-flex align-items-center justify-content-center">
-                <div class="close-btn">Close <i class="fa fa-close"></i></div>
-                <form id="searchForm" action="#">
-                <div class="form-group">
-                    <input type="search" name="search" placeholder="What are you searching for...">
-                    <button type="submit" class="submit">Search</button>
-                </div>
-                </form>
-            </div>
-            </div>
             <div class="container-fluid d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
                     <!-- Navbar Header-->
@@ -55,7 +44,8 @@
                     <!-- Sidebar Toggle Btn-->
                     <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
                 </div>
-                <div class="right-menu list-inline no-margin-bottom">    
+                <div class="right-menu list-inline no-margin-bottom"> 
+                    
                     <!-- Log out -->
                     <div class="list-inline-item logout">                   
                         <form method="POST" action="{{ route('logout') }}">
@@ -95,18 +85,18 @@
                 </a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="{{route('admin.addcategory')}}">Add Category</a></li>
-                    <li><a href="{{route('admin.viewcategory')}}">View Category</a></li>
+                    <li><a href="{{route('admin.viewcategory')}}">View Categories</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> 
                     <i class="icon-windows"></i>
-                    Example dropdown 
+                    Product 
                 </a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
+                    <li><a href="{{route('admin.addproduct')}}">Add Product</a></li>
+                    <li><a href="{{route('admin.viewproduct')}}">View Peoducts</a></li>
+                    <li><a href="{{route('admin.vieworder')}}">View Orders</a></li>
                 </ul>
             </li>
         </ul>
@@ -121,8 +111,12 @@
         <section class="no-padding-top no-padding-bottom">
              @yield('dashboard')
              @yield('add_category')
+             @yield('add_product')
              @yield('view_category')
              @yield('update_category')
+             @yield('view_product')
+             @yield('update_product')
+             @yield('view_order')
         </section>
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">
